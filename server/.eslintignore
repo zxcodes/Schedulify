@@ -1,0 +1,4 @@
+**/__tests__/**
+**/*.test.js
+dist/
+appointment.test.js
