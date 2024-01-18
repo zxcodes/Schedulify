@@ -96,7 +96,6 @@ const Layout = (): JSX.Element => {
       <Header title="Schedulify" />
 
       <Spacer space="lg" />
-
       <div className="content-holder">
         <AppointmentForm
           appointmentName={appointmentName}
@@ -105,7 +104,6 @@ const Layout = (): JSX.Element => {
           handleTimeSelection={handleTimeSelection}
           selectedTime={selectedTime}
         />
-
         <AppointmentsList
           appointmentsList={appointments}
           deleteAppointment={deleteAppointment}
