@@ -1,5 +1,5 @@
-import { Appointment } from "../types";
+import { AppointmentType } from "../types";
 
-const appointments: Appointment[] = [];
+const appointments: AppointmentType[] = [];
 
 export { appointments };

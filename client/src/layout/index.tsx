@@ -5,13 +5,13 @@ import {
   Header,
   Spacer,
 } from "@app/components";
-import { Appointment } from "@app/types";
+import { AppointmentType } from "@app/types";
 import { deleteData, getData, postData } from "@app/utils/functions";
 import { useEffect, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 
 const Layout = (): JSX.Element => {
-  const [appointments, setAppointments] = useState<Appointment[]>([]);
+  const [appointments, setAppointments] = useState<AppointmentType[]>([]);
   const [appointmentName, setAppointmentName] = useState<string>("");
   const [selectedTime, setSelectedTime] = useState<string>("");
 
@@ -44,7 +44,9 @@ const Layout = (): JSX.Element => {
 
   const getAppointments = async () => {
     try {
-      const appointmentsData = await getData<Appointment[]>("api/appointments");
+      const appointmentsData = await getData<AppointmentType[]>(
+        "api/appointments"
+      );
       if (appointmentsData) {
         setAppointments(appointmentsData);
       }
@@ -58,13 +60,13 @@ const Layout = (): JSX.Element => {
 
     if (isValidAppointment) {
       try {
-        const newAppointment: Appointment = {
+        const newAppointment: AppointmentType = {
           name: appointmentName,
           time: selectedTime,
           id: uuidv4(),
         };
 
-        const response = await postData<Appointment>(
+        const response = await postData<AppointmentType>(
           "api/appointments/create",
           newAppointment
         );
@@ -78,7 +80,7 @@ const Layout = (): JSX.Element => {
 
   const deleteAppointment = async (id: string) => {
     try {
-      await deleteData<Appointment>(`api/appointments/delete/${id}`);
+      await deleteData<AppointmentType>(`api/appointments/delete/${id}`);
       setAppointments(
         appointments.filter((appointment) => appointment.id !== id)
       );

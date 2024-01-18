@@ -5,7 +5,7 @@ import {
   deleteAppointmentRouter,
   getAppointmentsRouter,
 } from "./src/routes/appointments";
-import { APPOINTMENTS_ROUTE } from "./src/constants";
+import { BASE_API_ROUTE } from "./src/constants";
 
 const app: Express = express();
 const PORT: number = 3001;
@@ -13,9 +13,9 @@ const PORT: number = 3001;
 app.use(cors());
 app.use(express.json());
 
-app.use(APPOINTMENTS_ROUTE, getAppointmentsRouter);
-app.use(APPOINTMENTS_ROUTE, createAppointmentRouter);
-app.use(APPOINTMENTS_ROUTE, deleteAppointmentRouter);
+app.use(BASE_API_ROUTE, getAppointmentsRouter);
+app.use(BASE_API_ROUTE, createAppointmentRouter);
+app.use(BASE_API_ROUTE, deleteAppointmentRouter);
 
 app.listen(PORT, () => {
   // eslint-disable-next-line no-console

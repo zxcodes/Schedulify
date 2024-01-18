@@ -1,2 +1,2 @@
-const APPOINTMENTS_ROUTE = "/api/appointments";
-export { APPOINTMENTS_ROUTE };
+const BASE_API_ROUTE = "/api/appointments";
+export { BASE_API_ROUTE };

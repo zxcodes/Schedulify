@@ -1,9 +1,9 @@
-import { Appointment } from "@app/types";
+import { AppointmentType } from "@app/types";
 import AppointmentListCard from "./AppointmentListCard";
 import { Spacer } from ".";
 
 interface AppointmentsListProps {
-  appointmentsList: Appointment[];
+  appointmentsList: AppointmentType[];
   deleteAppointment: (id: string) => void;
 }
 

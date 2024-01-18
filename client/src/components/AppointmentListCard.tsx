@@ -1,9 +1,9 @@
-import { Appointment } from "@app/types";
+import { AppointmentType } from "@app/types";
 import { CSSProperties } from "react";
 import Button from "./Button";
 
 type AppointmentListCardProps = {
-  appointmentData: Appointment;
+  appointmentData: AppointmentType;
   onDelete: () => void;
 };
 

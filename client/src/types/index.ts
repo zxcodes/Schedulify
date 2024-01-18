@@ -1,6 +1,6 @@
-type Appointment = {
+type AppointmentType = {
   id: string;
   name: string;
   time: string;
 };
-export type { Appointment };
+export type { AppointmentType };

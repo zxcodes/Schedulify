@@ -1,6 +1,6 @@
 import express, { Request, Response } from "express";
 import { appointments } from "../../models/appointment-model";
-import { Appointment } from "../../types";
+import { AppointmentType } from "../../types";
 import {
   isDuplicate as isDuplicateAppointment,
   validateInput,
@@ -24,7 +24,7 @@ createAppointmentRouter.post("/create", (req: Request, res: Response) => {
         .json({ error: "Time slot already booked. Try another time!" });
     }
 
-    const newAppointment: Appointment = { name, time, id };
+    const newAppointment: AppointmentType = { name, time, id };
     appointments.push(newAppointment);
 
     res.status(201).json(newAppointment);
