@@ -15,17 +15,6 @@ const Layout = (): JSX.Element => {
   const [appointmentName, setAppointmentName] = useState<string>("");
   const [selectedTime, setSelectedTime] = useState<string>("");
 
-  const getAppointments = async () => {
-    try {
-      const appointmentsData = await getData<Appointment[]>("api/appointments");
-      if (appointmentsData) {
-        setAppointments(appointmentsData);
-      }
-    } catch (error) {
-      console.error("Failed to get appointments: ", error);
-    }
-  };
-
   const resetAppointmentState = () => {
     setAppointmentName("");
     setSelectedTime("");
@@ -51,6 +40,17 @@ const Layout = (): JSX.Element => {
     }
 
     return true;
+  };
+
+  const getAppointments = async () => {
+    try {
+      const appointmentsData = await getData<Appointment[]>("api/appointments");
+      if (appointmentsData) {
+        setAppointments(appointmentsData);
+      }
+    } catch (error) {
+      console.error("Failed to get appointments: ", error);
+    }
   };
 
   const createAppointment = async () => {
