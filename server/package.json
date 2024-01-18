@@ -1,7 +1,7 @@
 {
-  "name": "your-backend-app",
+  "name": "server",
   "version": "1.0.0",
-  "description": "Your backend application description",
+  "description": "Server for schedulify app",
   "main": "dist/server.js",
   "scripts": {
     "start": "npm run build && node dist/server.js",
