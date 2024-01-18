@@ -1,4 +1,5 @@
 type Appointment = {
+  id: string;
   name: string;
   time: string;
 };

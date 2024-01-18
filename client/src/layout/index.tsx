@@ -8,6 +8,7 @@ import {
 import { Appointment } from "@app/types";
 import { deleteData, getData, postData } from "@app/utils/functions";
 import { useEffect, useState } from "react";
+import { v4 as uuidv4 } from "uuid";
 
 const Layout = (): JSX.Element => {
   const [appointments, setAppointments] = useState<Appointment[]>([]);
@@ -57,10 +58,14 @@ const Layout = (): JSX.Element => {
 
     if (isValidAppointment) {
       try {
-        const newAppointment = { name: appointmentName, time: selectedTime };
+        const newAppointment: Appointment = {
+          name: appointmentName,
+          time: selectedTime,
+          id: uuidv4(),
+        };
 
         const response = await postData<Appointment>(
-          "api/appointments",
+          "api/appointments/create",
           newAppointment
         );
         setAppointments([...appointments, response]);
@@ -71,11 +76,11 @@ const Layout = (): JSX.Element => {
     }
   };
 
-  const deleteAppointment = async (time: string) => {
+  const deleteAppointment = async (id: string) => {
     try {
-      await deleteData<Appointment>(`api/appointments/${time}`);
+      await deleteData<Appointment>(`api/appointments/delete/${id}`);
       setAppointments(
-        appointments.filter((appointment) => appointment.time !== time)
+        appointments.filter((appointment) => appointment.id !== id)
       );
     } catch (error) {
       console.error("Error deleting appointment: ", error);

@@ -4,7 +4,7 @@ import { Spacer } from ".";
 
 interface AppointmentsListProps {
   appointmentsList: Appointment[];
-  deleteAppointment: (time: string) => void;
+  deleteAppointment: (id: string) => void;
 }
 
 const AppointmentsList = ({
@@ -22,9 +22,9 @@ const AppointmentsList = ({
 
       {appointmentsList.map((appointment) => (
         <AppointmentListCard
-          key={appointment.time}
+          key={appointment.id}
           appointmentData={appointment}
-          onDelete={() => deleteAppointment(appointment.time)}
+          onDelete={() => deleteAppointment(appointment.id)}
         />
       ))}
     </div>

@@ -8,9 +8,9 @@ import {
 
 const createAppointmentRouter = express.Router();
 
-createAppointmentRouter.post("/", (req: Request, res: Response) => {
+createAppointmentRouter.post("/create", (req: Request, res: Response) => {
   try {
-    const { name, time } = req.body;
+    const { name, time, id } = req.body;
 
     if (!validateInput(name, time)) {
       return res
@@ -24,7 +24,7 @@ createAppointmentRouter.post("/", (req: Request, res: Response) => {
         .json({ error: "Time slot already booked. Try another time!" });
     }
 
-    const newAppointment: Appointment = { name, time };
+    const newAppointment: Appointment = { name, time, id };
     appointments.push(newAppointment);
 
     res.status(201).json(newAppointment);

@@ -3,12 +3,12 @@ import { appointments } from "../../models/appointment-model";
 
 const deleteAppointmentRouter = express.Router();
 
-deleteAppointmentRouter.delete("/:time", (req: Request, res: Response) => {
+deleteAppointmentRouter.delete("/delete/:id", (req: Request, res: Response) => {
   try {
-    const { time } = req.params;
+    const { id } = req.params;
 
     const updatedAppointments = appointments.filter(
-      (appointment) => appointment.time !== time
+      (appointment) => appointment.id !== id
     );
 
     appointments.length = 0;

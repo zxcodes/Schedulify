@@ -13,7 +13,7 @@ export default function AppointmentListCard({
 }: AppointmentListCardProps) {
   return (
     <div style={cardStyles}>
-      <p className="heading-small">
+      <p className="heading-small appointment-name">
         {`${appointmentData.name} - ${appointmentData.time}`}
       </p>
       <Button

@@ -1,6 +1,5 @@
 /* eslint-disable no-undef */
 /* eslint-disable @typescript-eslint/no-var-requires */
-
 const request = require("supertest");
 const { app } = require("../server");
 
@@ -13,6 +12,7 @@ describe("Tests for Appointment APIs", () => {
 
   afterAll((done) => {
     server.close(done);
+    done();
   });
 
   it("should get all appointments", async () => {
@@ -25,10 +25,11 @@ describe("Tests for Appointment APIs", () => {
     const appointmentData = {
       name: "John Doe",
       time: "12:00 PM",
+      id: 1,
     };
 
     const response = await request(server)
-      .post("/api/appointments")
+      .post("/api/appointments/create")
       .send(appointmentData);
 
     expect(response.status).toBe(201);
@@ -37,7 +38,9 @@ describe("Tests for Appointment APIs", () => {
   });
 
   it("should not create an appointment with missing data", async () => {
-    const response = await request(server).post("/api/appointments").send({});
+    const response = await request(server)
+      .post("/api/appointments/create")
+      .send({});
 
     expect(response.status).toBe(400);
     expect(response.body.error).toBe("Name and time are required fields.");
@@ -47,16 +50,18 @@ describe("Tests for Appointment APIs", () => {
     const appointmentData = {
       name: "Jane Doe",
       time: "12:00 PM",
+      id: 4,
     };
 
-    // Create an initial appointment
-    await request(server).post("/api/appointments").send(appointmentData);
-
-    // Attempt to create another appointment with the same time slot
-    const response = await request(server)
-      .post("/api/appointments")
+    // Creating an initial appointment
+    await request(server)
+      .post("/api/appointments/create")
       .send(appointmentData);
 
+    // Creating another appointment with the same time slot
+    const response = await request(server)
+      .post("/api/appointments/create")
+      .send(appointmentData);
     expect(response.status).toBe(400);
     expect(response.body.error).toBe(
       "Time slot already booked. Try another time!"
@@ -67,15 +72,16 @@ describe("Tests for Appointment APIs", () => {
     const appointmentData = {
       name: "Alice",
       time: "3:00 PM",
+      id: 2,
     };
 
     // Create an appointment to be deleted
     const createdAppointment = await request(server)
-      .post("/api/appointments")
+      .post("/api/appointments/create")
       .send(appointmentData);
-
+    // Deleting the created appointment
     const response = await request(server).delete(
-      `/api/appointments/${createdAppointment.body.time}`
+      `/api/appointments/delete/${createdAppointment.body.id}`
     );
     expect(response.status).toBe(200);
     expect(response.body.message).toBe("Appointment deleted successfully.");
