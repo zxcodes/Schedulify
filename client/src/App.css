@@ -1,0 +1,92 @@
+:root {
+  --primary-black: #353535;
+  --primary-white: #fff;
+  --font-primary: Inter;
+  --primary-border-radius: 2.5rem;
+  --primary-background: rgba(255, 255, 255, 0.484);
+  --primary-backdrop-blur: 2rem;
+}
+
+.app-wrapper {
+  margin: 0 auto;
+  padding: 2rem;
+  background-color: #d199ff;
+  background-image: radial-gradient(
+      at 23% 78%,
+      hsla(251, 60%, 75%, 1) 0px,
+      transparent 50%
+    ),
+    radial-gradient(at 3% 5%, hsla(158, 73%, 71%, 1) 0px, transparent 50%),
+    radial-gradient(at 31% 49%, hsla(82, 89%, 79%, 1) 0px, transparent 50%),
+    radial-gradient(at 72% 21%, hsla(225, 64%, 64%, 1) 0px, transparent 50%),
+    radial-gradient(at 56% 36%, hsla(226, 82%, 74%, 1) 0px, transparent 50%),
+    radial-gradient(at 87% 47%, hsla(73, 69%, 61%, 1) 0px, transparent 50%),
+    radial-gradient(at 32% 20%, hsla(184, 66%, 63%, 1) 0px, transparent 50%);
+  min-height: 100vh;
+  width: 100%;
+  padding: 2.5rem;
+}
+
+.header-primary {
+  color: var(--primary-white);
+  font-family: Quicksand, Inter;
+  font-size: 3em;
+}
+
+.primary-content-container {
+  background-color: var(--primary-background);
+  backdrop-filter: blur(var(--primary-backdrop-blur));
+  border-radius: var(--primary-border-radius);
+  padding: 2rem;
+  min-height: 28rem;
+  width: 100%;
+  overflow: scroll;
+}
+
+.primary-heading {
+  color: var(--primary-black);
+  font-weight: normal;
+  font-family: Quicksand;
+  font-size: 1.8rem;
+}
+
+.heading-small {
+  color: var(--primary-black);
+  font-size: 1rem;
+  font-family: var(--font-primary);
+}
+
+.input-primary {
+  border: none;
+  border-radius: 0.6rem;
+  padding: 0.9rem 1rem;
+  background-color: #fff;
+  width: 100%;
+  color: var(--primary-black);
+  font-family: var(--font-primary);
+}
+
+.appointment-buttons-holder {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.content-holder {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+@media only screen and (max-width: 767px) {
+  .content-holder {
+    flex-direction: column;
+  }
+  .app-wrapper {
+    padding: 1.7rem;
+  }
+  .header-primary {
+    font-size: 2rem;
+  }
+}
