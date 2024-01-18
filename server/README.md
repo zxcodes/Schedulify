@@ -1,19 +1,21 @@
-# Schedulify Client
+# Schedulify Server
 
-- This is a React + TypeScript project and has been bootstrapped with [Vite](https://vitejs.dev/).
+- This is an Express + TypeScript project.
 
 ## Getting Started
+
+### Installation
 
 1. Install dependencies
 
 ```bash
- npm install
+npm install
 ```
 
 2. Start the development server:
 
 ```bash
-npm run dev
+npm start
 ```
 
 3. Build for production:
@@ -22,10 +24,10 @@ npm run dev
  npm build
 ```
 
-4. Preview production build:
+4. Run API tests:
 
 ```bash
-npm preview
+npm test
 ```
 
 5. Lint for errors:
