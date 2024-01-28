@@ -1,5 +1,10 @@
 # Schedulify
 
+- A simple Scheduling App built with React and Express.
+
+# Screenshot:
+<img width="100%" alt="Schedulify App Interface" src="https://github.com/zxcodes/Schedulify/assets/44538497/1949ba0b-8ea3-4585-94b8-9c8f9588e631">
+
 ## Getting Started
 
 1. Clone this repository:
